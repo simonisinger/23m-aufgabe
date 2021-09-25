@@ -8,10 +8,13 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-        - mariadb
+      - mariadb
     environment:
       - "WEB_DOCUMENT_ROOT=/app/public"
   mariadb:
     image: 'mariadb:latest'
+    environment:
+     - "MARIADB_ROOT_PASSWORD="
+     - "MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true"
     expose:
         - 3306
